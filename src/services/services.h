@@ -1,0 +1,33 @@
+#pragma once
+#include <Arduino.h>
+#include "../models/state.h"
+
+class SensorService {
+public:
+  void begin();
+  void update(SystemState& state);
+};
+
+class MeteoService {
+public:
+  void begin();
+  void update(SystemState& state);
+};
+
+class GnssService {
+public:
+  void begin(HardwareSerial& serial);
+  void update(SystemState& state);
+};
+
+class LoraService {
+public:
+  void begin();
+  void update(SystemState& state);
+};
+
+class UiService {
+public:
+  void begin();
+  void render(const SystemState& state);
+};
