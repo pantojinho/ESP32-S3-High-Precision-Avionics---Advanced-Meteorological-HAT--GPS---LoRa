@@ -2,7 +2,7 @@
 #include <Arduino.h>
 #include "../models/state.h"
 
-class SensorService {
+class FlightCoreService {
 public:
   void begin();
   void update(SystemState& state);
@@ -21,6 +21,12 @@ public:
 };
 
 class LoraService {
+public:
+  void begin();
+  void update(SystemState& state);
+};
+
+class LoggerService {
 public:
   void begin();
   void update(SystemState& state);

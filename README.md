@@ -1,40 +1,50 @@
-# StratosVanish S3 - Avionics + Meteo (ESP32-S3)
+# ESP32-S3 Waveshare HAT v1 (Telemetry + Flight + Balloon)
 
-This repo contains a starter skeleton for a stable, non-blocking firmware on ESP32-S3.
-It targets a multi-menu UI (classic aviation instruments + mini meteo station)
-using Arduino C++ with FreeRTOS tasks.
+PT-BR:
+Este repositorio contem o firmware e a documentacao para uma HAT PCB que encaixa por baixo da
+Waveshare ESP32-S3 Touch AMOLED 1.64. O foco da v1 e: LoRa 915 MHz, GPS externo, sensores de voo
+(IMU + altimetria) e sensores meteo para modo balao.
 
-## Goals
-- Keep UI smooth (25-30 FPS) without sensor stalls
-- Use SRAM for critical data and PSRAM only for large buffers
-- Keep the code modular and testable
+EN:
+This repository contains firmware and docs for a bottom-mounted HAT PCB for the Waveshare
+ESP32-S3 Touch AMOLED 1.64. v1 focus: LoRa 915 MHz, external GPS, flight sensors (IMU + altimetry),
+and meteo sensors for balloon mode.
 
-## Quick Start
-- Recommended: PlatformIO (Arduino framework)
-- Alternative: Arduino IDE (rename `src/main.cpp` to `.ino` or create a new sketch that includes it)
+## Locked v1 Scope
 
-## Project Structure
-- `src/main.cpp`: entry point, tasks, scheduler
-- `src/config/`: pins, timing, build config
-- `src/models/`: shared state structs
-- `src/services/`: high-level services (IMU, meteo, GNSS, LoRa, UI)
-- `src/drivers/`: low-level sensor wrappers (stubs for now)
-- `src/ui/`: screens and rendering logic (stubs for now)
-- `docs/ARCHITECTURE.md`: system plan and data flow
-- `docs/BSEC_NOTES.md`: notes for BME688 IAQ (BSEC) integration
+- LoRa SX1262/CC68 (915 MHz, telemetry RX/TX)
+- IMU QMI8658 (attitude baseline)
+- BMP581 (altitude + vario)
+- BME688 (temperature/humidity/gas)
+- GPS external connector (1x6, 2.54 mm)
+- Shared I2C expansion header
+- Powered from Waveshare BAT/3V3 rails
+
+## Repository Layout
+
+- `src/`: active firmware skeleton and task model
+- `hardware/hat_v1/`: mechanical/electrical/manufacturing artifacts for v1
+- `docs/hardware/`: pin map, requirements, power budget, manufacturing package
+- `docs/software/`: implementation phases and bring-up flow
+- `docs/project/`: project memory and file inventory
+- `docs/process/`: status board and collaboration state
+- `archive/legacy/`: archived legacy references (migrated from old project folder)
+- `AGENTS.md`: handoff and update protocol for agents
+
+## Start Here
+
+1. Hardware baseline: `docs/hardware/PINMAP.md`
+2. Requirements: `docs/hardware/HAT_V1_REQUIREMENTS.md`
+3. Phases: `docs/software/IMPLEMENTATION_PHASES.md`
+4. Memory and decisions: `docs/project/PROJECT_MEMORY.md`
+5. Live status: `docs/process/AGENT_STATUS.md`
 
 ## Build Notes
-- This skeleton compiles only after adding the required libraries.
-- Suggested libraries:
-  - LVGL (UI)
-  - TinyGPS++ (GNSS)
-  - Madgwick or Mahony filter
-  - Sensor drivers for BMP581, BMM350, BME688, LTR-390, QMI8658
 
-## Next Steps
-1. Confirm pin map in `src/config/pins.h`
-2. Add sensor drivers and verify I2C addresses
-3. Connect UI widgets to `SystemState`
-4. Add LoRa packet format and send rate
-
-If you want, I can also add a PlatformIO `platformio.ini` and basic build presets.
+- Framework: Arduino + FreeRTOS on ESP32-S3
+- Current firmware is an integration skeleton with non-blocking services
+- Recommended libs for full implementation:
+  - TinyGPS++
+  - RadioLib
+  - BMP581/QMI8658/BME688 drivers
+  - Optional UI stack (LVGL)

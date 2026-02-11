@@ -1,0 +1,10 @@
+Ref,Value,Footprint,Qty,Manufacturer,MPN,Notes
+U1,SX1262/CC68,Module-SMD,1,Semtech/compatible,CC68-SMD,LoRa 915 MHz
+U2,QMI8658,LGA,1,QST,QMI8658,IMU 6-axis
+U3,BMP581,LGA,1,Bosch,BMP581,Barometer
+U4,BME688,LGA,1,Bosch,BME688,Meteo sensor
+J1,GPS Header 1x6 2.54,TH,1,Generic,HDR-1x6-2.54,External GPS connector
+J2,Expansion Header,TH,1,Generic,HDR-1xN,I2C/UART expansion
+J3,LoRa RF connector,UFL,1,HRS,U.FL-R-SMT,Rf antenna connector
+C*,Decoupling capacitors,0603,Multiple,Generic,100nF/1uF,Per IC power pins
+R*,Pull-up resistors,0603,Multiple,Generic,4k7/10k,As required by buses

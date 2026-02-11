@@ -7,6 +7,7 @@ namespace Config {
   constexpr uint32_t METEO_RATE_HZ  = 2;
   constexpr uint32_t GNSS_RATE_HZ   = 5;
   constexpr uint32_t LORA_RATE_HZ   = 2;
+  constexpr uint32_t LOGGER_RATE_HZ = 1;
   constexpr uint32_t UI_RATE_HZ     = 30;
 
   // Stack sizes (words, not bytes)
@@ -14,9 +15,11 @@ namespace Config {
   constexpr uint32_t STACK_METEO  = 4096;
   constexpr uint32_t STACK_GNSS   = 4096;
   constexpr uint32_t STACK_LORA   = 4096;
+  constexpr uint32_t STACK_LOGGER = 4096;
   constexpr uint32_t STACK_UI     = 6144;
 
   // Core affinity (ESP32-S3 has 2 cores)
   constexpr int CORE_SENSOR = 0;
+  constexpr int CORE_LOGGER = 0;
   constexpr int CORE_UI     = 1;
 }

@@ -1,0 +1,7 @@
+path,files,class
+archive,187,legacy
+src,6,active_firmware
+docs,16,active_documentation
+hardware,8,active_hardware
+examples,1,active_example
+root_control_files,3,active_control
