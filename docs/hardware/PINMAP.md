@@ -1,6 +1,6 @@
 # PINMAP - Waveshare Base + HAT v1
 
-Last update: 2026-02-11
+Last update: 2026-02-14
 Status: LOCKED for v1 baseline
 
 ## PT-BR
@@ -26,6 +26,15 @@ If `src/config/pins.h` differs from this file, both must be updated in the same 
 | SD MOSI | GPIO39 | Native TF slot |
 | SD MISO | GPIO40 | Native TF slot |
 | SD SCK | GPIO41 | Native TF slot |
+
+## Base board touch controller (FT3168)
+
+| Function | GPIO | Notes |
+| --- | --- | --- |
+| Touch SDA | GPIO47 | Shared I2C bus, addr 0x38 |
+| Touch SCL | GPIO48 | Shared I2C bus, addr 0x38 |
+| Touch INT | NC | Polling mode in current firmware |
+| Touch RST | NC | Not exposed |
 
 ## HAT v1 (dedicated LoRa bus)
 

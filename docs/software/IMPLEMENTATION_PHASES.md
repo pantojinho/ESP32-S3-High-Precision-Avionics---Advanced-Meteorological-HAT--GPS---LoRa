@@ -1,6 +1,6 @@
 # Implementation Phases - Firmware and Bring-up
 
-Last update: 2026-02-11
+Last update: 2026-02-14
 
 ## Phase 0 - Bring-up board
 
@@ -29,6 +29,22 @@ Deliverables:
 
 Acceptance:
 - 1h stable run with no unexpected reset.
+
+## Phase 1.5 - Mini-OS UI baseline
+
+Goal:
+- deliver mission-ready on-device UX for quick operational awareness.
+
+Deliverables:
+- multi-page UI (home/avionics/meteo/tracker/gps/black-box/config)
+- status bar with battery and connectivity indicators
+- mode navigation and config menu skeleton
+- documented icon and screen strategy
+- FT3168 touch input integration
+- GPS mission mode screen
+
+Acceptance:
+- all pages render from `SystemState` with no blocking calls in UI task.
 
 ## Phase 2 - Balloon meteo mode
 

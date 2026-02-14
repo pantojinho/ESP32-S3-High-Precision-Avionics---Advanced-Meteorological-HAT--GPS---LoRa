@@ -9,6 +9,16 @@ enum HealthFlags : uint32_t {
   HEALTH_LOGGER_OK = (1u << 4),
 };
 
+enum class MissionMode : uint8_t {
+  BOOT = 0,
+  AVIONICS = 1,
+  METEO = 2,
+  TRACKER = 3,
+  GPS = 4,
+  BLACK_BOX = 5,
+  CONFIG = 6,
+};
+
 struct FlightState {
   float pitch_deg = 0.0f;
   float roll_deg = 0.0f;
@@ -34,7 +44,11 @@ struct GnssState {
   double lon = 0.0;
   float altitude_m = 0.0f;
   float ground_speed_mps = 0.0f;
+  float course_deg = 0.0f;
+  float hdop = 99.9f;
+  uint8_t satellites = 0;
   uint8_t fix_type = 0;
+  uint32_t last_fix_age_ms = 0;
   bool ok = false;
 };
 
@@ -42,6 +56,13 @@ struct LoraState {
   int16_t rssi = 0;
   uint32_t packets_tx = 0;
   uint32_t packets_rx = 0;
+  uint32_t mesh_packets_forwarded = 0;
+  uint32_t mesh_packets_dropped = 0;
+  uint16_t mesh_node_id = 0;
+  uint16_t mesh_last_from = 0;
+  uint16_t mesh_last_to = 0;
+  uint8_t mesh_last_hops = 0;
+  bool mesh_enabled = false;
   char last_payload[160] = {0};
   bool ok = false;
 };
@@ -62,6 +83,23 @@ struct HealthState {
   uint32_t fault_count_logger = 0;
 };
 
+struct ConnectivityState {
+  bool wifi_enabled = true;
+  bool wifi_connected = false;
+  int16_t wifi_rssi_dbm = -120;
+  bool ble_enabled = true;
+  bool ble_connected = false;
+  bool server_enabled = true;
+  bool server_online = false;
+  uint16_t server_port = 8080;
+  uint8_t server_clients = 0;
+};
+
+struct UiState {
+  MissionMode requested_mode = MissionMode::BOOT;
+  bool auto_cycle = true;
+};
+
 struct SystemState {
   uint32_t timestamp_ms = 0;
   FlightState flight;
@@ -70,4 +108,6 @@ struct SystemState {
   LoraState radio;
   PowerState power;
   HealthState health;
+  ConnectivityState connectivity;
+  UiState ui;
 };

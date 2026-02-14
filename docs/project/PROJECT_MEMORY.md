@@ -1,6 +1,6 @@
 # Project Memory - HAT v1 for Waveshare ESP32-S3
 
-Last update: 2026-02-11
+Last update: 2026-02-14
 Status: LOCKED v1 baseline
 
 ## Mission
@@ -40,12 +40,22 @@ with multi-use capability:
 5. External GPS connector
 6. I2C/UART expansion header
 
+## Base board touch decision
+
+- Class: `LOCKED` (for current base board)
+- Controller: FT3168 on shared I2C (GPIO47/GPIO48), address `0x38`
+- Firmware mode: polling (INT/RST not required)
+
 ## Deferred (v2)
 
 1. Mesh routing
 2. Repeater-specific behavior
 3. Non-GNSS satellite receive scenarios
 4. Optional sensor expansion depending on board area
+
+Note:
+- Firmware now contains a `CANDIDATE` MeshLoRa protocol baseline for software validation.
+- Product lock is unchanged: mesh/repeater remains deferred for formal v1 scope.
 
 ## Risks to control
 

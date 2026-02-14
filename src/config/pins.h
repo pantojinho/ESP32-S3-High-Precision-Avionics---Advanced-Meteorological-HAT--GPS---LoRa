@@ -27,11 +27,11 @@ namespace DisplayPins {
   constexpr int LCD_D2    = 13;
   constexpr int LCD_D3    = 14;
   constexpr int LCD_RST   = 21;
-  // Touch (I2C) - same as BaseBoardPins
+  // FT3168 touch (I2C, addr 0x38)
   constexpr int TOUCH_SDA = 47;
   constexpr int TOUCH_SCL = 48;
-  constexpr int TOUCH_INT = 42; // Check schematic if possible, often 42 or similar
-  constexpr int TOUCH_RST = -1; // Often shared or not connected
+  constexpr int TOUCH_INT = -1; // Not required for polling mode
+  constexpr int TOUCH_RST = -1; // Not exposed on this board
 }
 
 namespace HatPins {

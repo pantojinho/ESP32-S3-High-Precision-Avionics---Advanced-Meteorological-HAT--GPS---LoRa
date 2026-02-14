@@ -115,6 +115,12 @@ void setup() {
   g_state.power.battery_voltage = 4.10f;
   g_state.power.low_batt_flag = false;
   g_state.power.ok = true;
+  g_state.connectivity.wifi_enabled = true;
+  g_state.connectivity.ble_enabled = true;
+  g_state.connectivity.server_enabled = true;
+  g_state.connectivity.server_port = 8080;
+  g_state.ui.requested_mode = MissionMode::GPS;
+  g_state.ui.auto_cycle = true;
 
   Wire.begin(Pins::I2C_SDA, Pins::I2C_SCL);
   GNSS_SERIAL.begin(9600, SERIAL_8N1, Pins::GPS_RX, Pins::GPS_TX);
