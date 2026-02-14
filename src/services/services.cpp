@@ -85,10 +85,32 @@ void LoggerService::update(SystemState& state) {
 }
 
 void UiService::begin() {
-  // TODO(v1): init display + LVGL pages.
+  _display.begin();
+  
+  // TODO(v1): Initialize UI pages/screens here
+  // For now, let's create a simple label to verify it works
+  lv_obj_t *label = lv_label_create(lv_screen_active());
+  lv_label_set_text(label, "Antigravity Avionics\nInitializing...");
+  lv_obj_center(label);
 }
 
 void UiService::render(const SystemState& state) {
-  // TODO(v1): render tracker / flight / meteo modes.
-  (void)state;
+  // Update UI Elements with state data if needed
+  // ...
+  
+  // Handle LVGL tasks
+  // Note: We need to handle ticks. For simplicity in this task, 
+  // we assume the loop time is roughly constant or we use system time.
+  // Ideally, use a dedicated timer or esp_timer for lv_tick_inc.
+  static uint32_t last_ms = 0;
+  uint32_t now = millis();
+  if (last_ms == 0) last_ms = now;
+  
+  uint32_t dt = now - last_ms;
+  if (dt > 0) {
+      lv_tick_inc(dt);
+      last_ms = now;
+  }
+  
+  _display.update(); // Calls lv_timer_handler
 }

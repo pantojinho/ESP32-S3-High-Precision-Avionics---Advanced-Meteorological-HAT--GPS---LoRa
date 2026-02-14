@@ -1,6 +1,7 @@
 #pragma once
 #include <Arduino.h>
 #include "../models/state.h"
+#include "../drivers/display.h"
 
 class FlightCoreService {
 public:
@@ -36,4 +37,7 @@ class UiService {
 public:
   void begin();
   void render(const SystemState& state);
+
+private:
+  DisplayDriver _display;
 };

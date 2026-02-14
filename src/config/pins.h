@@ -18,6 +18,22 @@ namespace BaseBoardPins {
   constexpr int SD_SCK  = 41;
 }
 
+namespace DisplayPins {
+  // Waveshare 1.64 AMOLED (RM67162) QSPI
+  constexpr int LCD_CS    = 9;
+  constexpr int LCD_SCK   = 10;
+  constexpr int LCD_D0    = 11;
+  constexpr int LCD_D1    = 12;
+  constexpr int LCD_D2    = 13;
+  constexpr int LCD_D3    = 14;
+  constexpr int LCD_RST   = 21;
+  // Touch (I2C) - same as BaseBoardPins
+  constexpr int TOUCH_SDA = 47;
+  constexpr int TOUCH_SCL = 48;
+  constexpr int TOUCH_INT = 42; // Check schematic if possible, often 42 or similar
+  constexpr int TOUCH_RST = -1; // Often shared or not connected
+}
+
 namespace HatPins {
   // Dedicated LoRa SPI on the HAT
   constexpr int LORA_SCK  = 7;
